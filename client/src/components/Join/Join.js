@@ -11,7 +11,7 @@ const Join = () => {
 	return (
 		<div className='joinOuterContainer'>
 			<div className='joinInnerContainer'>
-				<h1 className='heading'>React Chat Aplikacja</h1>
+				<h1 className='heading'>React Chat </h1>
 				<div>
 					<input placeholder='Imię' className='joinInput' type='text' onChange={event => setName(event.target.value)} />
 				</div>
