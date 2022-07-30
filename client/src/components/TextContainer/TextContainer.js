@@ -13,14 +13,9 @@ const TextContainer = ({ users }) => (
 					💬
 				</span>
 			</h1>
+
 			<h2>
-				Stworzony przez Tomasz Majewski , dla Ludzi{' '}
-				<span role='img' aria-label='emoji'>
-					❤️
-				</span>
-			</h2>
-			<h2>
-				Wypróbuj już teraz!{' '}
+				Wypróbuj już teraz, mojej aplikacji!{' '}
 				<span role='img' aria-label='emoji'>
 					⬅️
 				</span>

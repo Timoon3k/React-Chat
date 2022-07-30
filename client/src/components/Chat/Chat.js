@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import queryString from 'query-string'
 import io from 'socket.io-client'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 
 import TextContainer from '../TextContainer/TextContainer'
 import Messages from '../Messages/Messages'
@@ -10,9 +10,11 @@ import Input from '../Input/Input'
 
 import './Chat.css'
 
+
 let socket
 
-const Chat = ({ location }) => {
+const Chat = () => {
+	const location = useLocation()
 	const [name, setName] = useState('')
 	const [room, setRoom] = useState('')
 	const [users, setUsers] = useState('')

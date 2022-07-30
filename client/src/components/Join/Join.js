@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Footer from '../Footer/Footer'
 
 import './Join.css'
 // import Check from '../Check/Check';
@@ -30,6 +31,8 @@ const Join = () => {
 						Dołącz
 					</button>
 				</Link>
+				<br /><br />
+				<Footer />
 			</div>
 		</div>
 	)
