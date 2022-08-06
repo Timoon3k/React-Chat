@@ -10,7 +10,6 @@ import Input from '../Input/Input'
 
 import './Chat.css'
 
-
 let socket
 
 const Chat = () => {
@@ -26,7 +25,7 @@ const Chat = () => {
 	useEffect(() => {
 		const { name, room } = queryString.parse(location.search)
 
-		socket = io(ENDPOINT)
+		  socket = io(ENDPOINT)
 
 		setRoom(room)
 		setName(name)
@@ -40,7 +39,7 @@ const Chat = () => {
 	}, [ENDPOINT, location.search])
 
 	useEffect(() => {
-		socket.on('message', message => {
+		  socket.on('message', message => {
 			setMessages(messages => [...messages, message])
 		})
 

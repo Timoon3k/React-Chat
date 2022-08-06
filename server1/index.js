@@ -1,14 +1,14 @@
-const http = require('http');
-const express = require('express');
-const socketio = require('socket.io');
-const cors = require('cors');
+import { createServer } from 'http';
+import express from 'express';
+import { Server } from "socket.io";
+import cors from 'cors';
 
-const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
+import { addUser, removeUser, getUser, getUsersInRoom } from './users';
 
-const router = require('./router');
+import router from './router';
 
 const app = express();
-const server = http.createServer(app);
+const server = createServer(app);
 const io = socketio(server);
 
 app.use(cors());
