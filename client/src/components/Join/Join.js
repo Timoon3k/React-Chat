@@ -1,14 +1,30 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import Footer from '../Footer/Footer'
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { SocketContext } from '../../context/socket';
+import Footer from '../Footer/Footer';
 
-import './Join.css'
+import './Join.css';
 // import Check from '../Check/Check';
 
 const Join = () => {
-	const [name, setName] = useState('')
-	const [room, setRoom] = useState('')
+	const [name, setName] = useState('');
+	const [room, setRoom] = useState('');
+	const socket = useContext(SocketContext);
 
+	const enterToRoom = event => {
+		if (!room || !name) {
+			event.preventDefault();
+			return;
+		}
+		
+		socket.emit('join', { name, room }, error => {
+			if (error) {
+				setName('');
+				setRoom('');
+				alert(error);
+			}
+		});
+	};
 	return (
 		<div className='joinOuterContainer'>
 			<div className='joinInnerContainer'>
@@ -24,18 +40,17 @@ const Join = () => {
 						onChange={event => setRoom(event.target.value)}
 					/>
 				</div>
-				<Link
-					onClick={event => (!name || !room ? event.preventDefault() : null)}
-					to={`/chat?name=${name}&room=${room}`}>
+				<Link onClick={enterToRoom} to={`/chat?name=${name}&room=${room}`}>
 					<button className={'button mt-20'} type='submit'>
 						Dołącz
 					</button>
 				</Link>
-				<br /><br />
+				<br />
+				<br />
 				<Footer />
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default Join
+export default Join;
