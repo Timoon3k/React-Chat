@@ -25,13 +25,6 @@ const Chat = () => {
 
 		setRoom(room);
 		setName(name);
-
-		socket.emit('join', { name, room }, error => {
-			if (error) {
-				setFlag(1);
-				alert(error);
-			}
-		});
 	}, [location.search, socket]);
 
 	useEffect(() => {
