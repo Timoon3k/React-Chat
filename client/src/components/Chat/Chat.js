@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import queryString from 'query-string';
-import io from 'socket.io-client';
 import { Navigate, useLocation } from 'react-router-dom';
 
 import TextContainer from '../TextContainer/TextContainer';
@@ -18,8 +17,9 @@ const Chat = () => {
 	const [users, setUsers] = useState('');
 	const [message, setMessage] = useState('');
 	const [messages, setMessages] = useState([]);
-	const [flag, setFlag] = useState(0);
+	const [flag] = useState(0);
 	const socket = useContext(SocketContext);
+
 	useEffect(() => {
 		const { name, room } = queryString.parse(location.search);
 
@@ -28,16 +28,16 @@ const Chat = () => {
 	}, [location.search, socket]);
 
 	useEffect(() => {
-		socket.on('message', message => {
-			setMessages(messages => [...messages, message]);
+		socket.on('message', (message) => {
+			setMessages((messages) => [...messages, message]);
 		});
 
 		socket.on('roomData', ({ users }) => {
 			setUsers(users);
 		});
-	}, []);
+	}, [socket]);
 
-	const sendMessage = event => {
+	const sendMessage = (event) => {
 		event.preventDefault();
 
 		if (message) {

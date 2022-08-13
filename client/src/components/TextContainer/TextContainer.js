@@ -1,20 +1,19 @@
-import React from 'react'
-
-import onlineIcon from '../../icons/onlineIcon.png'
-
-import './TextContainer.css'
+import React from 'react';
+import onlineIcon from '../../icons/onlineIcon.png';
+import 'animate.css';
+import './TextContainer.css';
 
 const TextContainer = ({ users }) => (
 	<div className='textContainer'>
 		<div>
-			<h1>
+			<h1 className='animate__bounceInRight'>
 				Witaj w React Chat App{' '}
 				<span role='img' aria-label='emoji'>
 					💬
 				</span>
 			</h1>
 
-			<h2>
+			<h2 className='animate__bounceInLeft'>
 				Wypróbuj już teraz, mojej aplikacji!{' '}
 				<span role='img' aria-label='emoji'>
 					⬅️
@@ -23,7 +22,7 @@ const TextContainer = ({ users }) => (
 		</div>
 		{users ? (
 			<div>
-				<h1>Osoby aktualnie czatujące:</h1>
+				<h1 className='animate__bounceInRight'>Osoby aktualnie czatujące:</h1>
 				<div className='activeContainer'>
 					<h2>
 						{users.map(({ name }) => (
@@ -37,6 +36,6 @@ const TextContainer = ({ users }) => (
 			</div>
 		) : null}
 	</div>
-)
+);
 
-export default TextContainer
+export default TextContainer;

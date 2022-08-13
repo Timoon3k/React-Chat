@@ -1,23 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SocketContext } from '../../context/socket';
 import Footer from '../Footer/Footer';
-
 import './Join.css';
-// import Check from '../Check/Check';
+import 'animate.css';
 
 const Join = () => {
 	const [name, setName] = useState('');
 	const [room, setRoom] = useState('');
 	const socket = useContext(SocketContext);
 
-	const enterToRoom = event => {
+	const enterToRoom = (event) => {
 		if (!room || !name) {
 			event.preventDefault();
 			return;
 		}
-		
-		socket.emit('join', { name, room }, error => {
+
+		socket.emit('join', { name, room }, (error) => {
 			if (error) {
 				setName('');
 				setRoom('');
@@ -28,17 +27,12 @@ const Join = () => {
 	return (
 		<div className='joinOuterContainer'>
 			<div className='joinInnerContainer'>
-				<h1 className='heading'>React Chat </h1>
+				<h1 className='animate__rubberBand'>React Chat </h1>
 				<div>
-					<input placeholder='Imię' className='joinInput' type='text' onChange={event => setName(event.target.value)} />
+					<input placeholder='Imię' className='joinInput' type='text' onChange={(event) => setName(event.target.value)} />
 				</div>
 				<div>
-					<input
-						placeholder='Pokój'
-						className='joinInput mt-20'
-						type='text'
-						onChange={event => setRoom(event.target.value)}
-					/>
+					<input placeholder='Pokój' className='joinInput mt-20' type='text' onChange={(event) => setRoom(event.target.value)} />
 				</div>
 				<Link onClick={enterToRoom} to={`/chat?name=${name}&room=${room}`}>
 					<button className={'button mt-20'} type='submit'>

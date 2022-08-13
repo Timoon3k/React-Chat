@@ -13,7 +13,7 @@ const io = new Server(server);
 app.use(cors());
 app.use(router);
 
-io.on('connect', socket => {
+io.on('connect', (socket) => {
 	socket.on('join', ({ name, room }, callback) => {
 		const { error, user } = addUser({ id: socket.id, name, room });
 
@@ -21,7 +21,7 @@ io.on('connect', socket => {
 
 		socket.join(user.room);
 
-		socket.emit('message', { user: 'Tomasz(Admin)', text: `${user.name}, Witaj w Pokoju ${user.room}.` });
+		socket.emit('message', { user: 'Tomasz(Admin)', text: `${user.name}, witaj w pokoju ${user.room}.` });
 		socket.broadcast.to(user.room).emit('message', { user: 'Tomasz(Admin)', text: `${user.name} dołączył!` });
 
 		io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });

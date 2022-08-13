@@ -1,8 +1,8 @@
-.author {
-    color: white;
-    text-align: center;
-    justify-content: center;
-    font-family: 'Roboto', sans-serif;
-    white-space: nowrap;
-
+.footer {
+	color: white;
+	text-align: center;
+	justify-content: center;
+	font-family: 'Roboto', sans-serif;
+	white-space: nowrap;
+	text-decoration: none;
 }
