@@ -3,7 +3,6 @@ import express from 'express';
 import { Server } from 'socket.io';
 import cors from 'cors';
 import router from './router.js';
-
 import { addUser, removeUser, getUser, getUsersInRoom } from './users.js';
 
 const app = express();
@@ -21,8 +20,8 @@ io.on('connect', (socket) => {
 
 		socket.join(user.room);
 
-		socket.emit('message', { user: 'Tomasz(Admin)', text: `${user.name}, witaj w pokoju ${user.room}.` });
-		socket.broadcast.to(user.room).emit('message', { user: 'Tomasz(Admin)', text: `${user.name} dołączył!` });
+		socket.emit('message', { user: 'Tomasz Majewski(Admin)', text: `${user.name}, Witaj w pokoju ${user.room}.` });
+		socket.broadcast.to(user.room).emit('message', { user: 'Tomasz Majewski(Admin)', text: `${user.name} dołączył!` });
 
 		io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
 
