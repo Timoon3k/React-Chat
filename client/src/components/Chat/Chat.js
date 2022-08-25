@@ -28,14 +28,21 @@ const Chat = () => {
 	}, [location.search, socket]);
 
 	useEffect(() => {
-		socket.removeAllListeners();
-		socket.on('message', message => {
+		const addMessage = message => {
 			setMessages(messages => [...messages, message]);
-		});
+		};
 
-		socket.on('roomData', ({ users }) => {
+		const setUsersInRoom = ({ users }) => {
 			setUsers(users);
-		});
+		};
+
+		socket.on('message', addMessage);
+		socket.on('roomData', setUsersInRoom);
+
+		return () => {
+			socket.off('message', addMessage);
+			socket.off('roomData', setUsersInRoom);
+		};
 	}, [socket]);
 
 	const sendMessage = event => {
