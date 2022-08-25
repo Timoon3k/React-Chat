@@ -28,8 +28,9 @@ const Chat = () => {
 	}, [location.search, socket]);
 
 	useEffect(() => {
-		socket.on('message', (message) => {
-			setMessages((messages) => [...messages, message]);
+		socket.removeAllListeners();
+		socket.on('message', message => {
+			setMessages(messages => [...messages, message]);
 		});
 
 		socket.on('roomData', ({ users }) => {
@@ -37,7 +38,7 @@ const Chat = () => {
 		});
 	}, [socket]);
 
-	const sendMessage = (event) => {
+	const sendMessage = event => {
 		event.preventDefault();
 
 		if (message) {
