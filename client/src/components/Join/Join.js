@@ -29,10 +29,20 @@ const Join = () => {
 			<div className='joinInnerContainer'>
 				<h1 className='animate__rubberBand'>React Chat </h1>
 				<div>
-					<input placeholder='Imię' className='joinInput' type='text' onChange={(event) => setName(event.target.value)} />
+					<input
+						placeholder='Imię'
+						className='joinInput'
+						type='text'
+						onChange={(event) => setName(event.target.value)}
+					/>
 				</div>
 				<div>
-					<input placeholder='Pokój' className='joinInput mt-20' type='text' onChange={(event) => setRoom(event.target.value)} />
+					<input
+						placeholder='Pokój'
+						className='joinInput mt-20'
+						type='text'
+						onChange={(event) => setRoom(event.target.value)}
+					/>
 				</div>
 				<Link onClick={enterToRoom} to={`/chat?name=${name}&room=${room}`}>
 					<button className={'button mt-20'} type='submit'>
