@@ -26,14 +26,8 @@
 	margin-bottom: 0px;
 }
 
-.animate__bounceInRight {
-	animation: bounceInRight;
-	animation-duration: 1.5s;
-	text-decoration: none;
-}
-
-.animate__bounceInLeft {
-	animation: bounceInLeft;
+.animate__rollIn {
+	animation: rollIn;
 	animation-duration: 1.5s;
 	text-decoration: none;
 }
