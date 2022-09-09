@@ -1,6 +1,6 @@
 import socketio from 'socket.io-client';
 import { createContext } from 'react';
-const ENDPOINT = 'ws://localhost:5000/';
+const ENDPOINT = 'https://tomaszmajewski-chat.herokuapp.com';
 
 export const socket = socketio.connect(ENDPOINT, { transports: ['websocket'] });
 export const SocketContext = createContext();
